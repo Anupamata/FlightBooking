@@ -9,13 +9,30 @@ public class BookedTickets {
     @Column(name = "bookingId")
     private long bookingId;
     @Column(name = "passengerId")
-    private String passengerId;
+    private long passengerId;
     @Column(name = "flightId")
-    private double flightId;
+    private long flightId;
     @Column(name = "seatsReserved")
     private long seatsReserved;
+    @Column(name = "boardingPoint")
+    private String boardingPoint;
+    @Column(name = "destination")
+    private String  destination;
+    public String getBoardingPoint() {
+        return boardingPoint;
+    }
 
+    public void setBoardingPoint(String boardingPoint) {
+        this.boardingPoint = boardingPoint;
+    }
 
+    public String getDestination() {
+        return destination;
+    }
+
+    public void setDestination(String destination) {
+        this.destination = destination;
+    }
     public long getBookingId() {
         return bookingId;
     }
@@ -24,19 +41,19 @@ public class BookedTickets {
         this.bookingId = bookingId;
     }
 
-    public String getPassengerId() {
+    public long getPassengerId() {
         return passengerId;
     }
 
-    public void setPassengerId(String passengerId) {
+    public void setPassengerId(long passengerId) {
         this.passengerId = passengerId;
     }
 
-    public double getFlightId() {
+    public long getFlightId() {
         return flightId;
     }
 
-    public void setFlightId(double flightId) {
+    public void setFlightId(long flightId) {
         this.flightId = flightId;
     }
 

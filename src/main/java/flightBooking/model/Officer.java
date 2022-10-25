@@ -15,6 +15,18 @@ public class Officer {
     private String username;
     @Column(name = "password")
     private String password;
+    @Column(name = "idAddress")
+    private long idAddress;
+    @Column(name = "mobileNumber")
+    private long mobileNumber;
+
+    public long getMobileNumber() {
+        return mobileNumber;
+    }
+
+    public void setMobileNumber(long mobileNumber) {
+        this.mobileNumber = mobileNumber;
+    }
 
     public long getOfficerId() {
         return officerId;
@@ -56,8 +68,6 @@ public class Officer {
         this.idAddress = idAddress;
     }
 
-    @Column(name = "idAddress")
-    private long idAddress;
 
 
 

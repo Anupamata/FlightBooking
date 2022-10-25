@@ -14,9 +14,39 @@ public class Passenger {
     private String username;
     @Column(name = "password")
     private String password;
-
     @Column(name = "idAddress")
     private long idAddress;
+    @Column(name = "gender")
+    private String gender;
+    @Column(name = "mobileNumber")
+    private long mobileNumber;
+    @Column(name = "passportNumber")
+    private long passportNumber;
+
+    public long getPassportNumber() {
+        return passportNumber;
+    }
+
+    public void setPassportNumber(long passportNumber) {
+        this.passportNumber = passportNumber;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public long getMobileNumber() {
+        return mobileNumber;
+    }
+
+    public void setMobileNumber(long mobileNumber) {
+        this.mobileNumber = mobileNumber;
+    }
+
 
     public long getPassengerId() {
         return passengerId;
@@ -41,11 +71,6 @@ public class Passenger {
     public void setIdAddress(long idAddress) {
         this.idAddress = idAddress;
     }
-
-
-
-
-
 
     public String getUsername() {
         return username;

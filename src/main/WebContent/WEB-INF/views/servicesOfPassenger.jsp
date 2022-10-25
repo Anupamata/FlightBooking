@@ -12,13 +12,13 @@
     <center>
     <h2>
     Welcome <i>${passenger.passengerName}</i><br></h2>
-   <form method="get"  action="/Evaluation/customer/fetchById/${customer.customerId}"></br>
+   <form method="get"  action="/FlightBooking/passenger/fetchById/${passenger.passengerId}"></br>
         <input style="height:50px;width:120px" type="submit"  value="View My Details"/></form>
-   <form method="get"  action="/Evaluation/customer/edit/${customer.customerId}"></br>
+   <form method="get"  action="/FlightBooking/passenger/edit/${passenger.passengerId}"></br>
         <input style="height:50px;width:120px" type="submit"  value="Edit  My Details"/></form>
-   <form method="get"  action="/Evaluation/customer/withdraw/${customer.customerId}"></br>
-        <input style="height:50px;width:120px" type="submit"  value="Withdraw Money"/></form>
-   <form method="get"  action="/Evaluation/customer/loanHome/${customer.customerId}"></br>
+   <form method="get"  action="/FlightBooking/passenger/fetchById"></br>
+        <input style="height:50px;width:120px" type="submit"  value="Search for Flight"/></form>
+   <form method="get"  action="/FlightBooking/passenger/availableTickets/${passenger.passengerId}"></br>
         <input style="height:50px;width:120px" type="submit"  value="   Loan Details   "/></form>
    <form method="get"  action="/Evaluation/"></br>
         <input style="height:50px;width:120px" type="submit"  value="   Log Out   "/></form>

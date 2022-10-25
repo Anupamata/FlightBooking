@@ -8,14 +8,22 @@ public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idAddress")
-    private long addressId;
+    private long idAddress;
+    @Column (name = "houseName")
+    private String houseName;
+    @Column (name = "city")
+    private String city;
+    @Column (name = "state")
+    private String state;
+    @Column(name = "pin")
+    private int pin;
 
-    public long getAddressId() {
-        return addressId;
+    public long getIdAddress() {
+        return idAddress;
     }
 
-    public void setAddressId(long addressId) {
-        this.addressId = addressId;
+    public void setIdAddress(long idAddress) {
+        this.idAddress = idAddress;
     }
 
     public String getHouseName() {
@@ -49,17 +57,4 @@ public class Address {
     public void setPin(int pin) {
         this.pin = pin;
     }
-
-    @Column (name = "houseName")
-    private String houseName;
-    @Column (name = "city")
-    private String city;
-    @Column (name = "state")
-    private String state;
-    @Column(name = "pin")
-    private int pin;
-
-
-
-
 }
