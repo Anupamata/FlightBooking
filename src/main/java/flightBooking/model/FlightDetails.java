@@ -1,5 +1,6 @@
 package flightBooking.model;
 import javax.persistence.*;
+import java.sql.Date;
 import java.sql.Time;
 
 @Entity
@@ -22,6 +23,27 @@ public class FlightDetails {
     private Time departureTime;
     @Column (name = "arrivalTime")
     private Time arrivalTime;
+    @Column (name = "date")
+    private Date date;
+    @Column (name = "price")
+    private long price;
+
+    public long getPrice() {
+        return price;
+    }
+
+    public void setPrice(long price) {
+        this.price = price;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
 
     public String getSource() {
         return source;

@@ -6,54 +6,54 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Edit Customer</title>
+<title>New Customer</title>
 </head>
 <body>
     <div align="center">
-        <h2>Flight Details</h2>
-        <form:form  method="post" modelAttribute="flightDetails">
-            <table border="1" cellpadding="5">
-                <tr>
-                    <td>Flight ID: </td>
-                    <td>${flightDetails.flightId}
-                </tr>
+        <h2>Add New Person</h2>
+        <form:form action="/FlightBooking/officer/saveFlight" method="post" modelAttribute="flightDetails">
+            <table border="0" cellpadding="5">
+
                 <tr>
                     <td>Flight Name: </td>
-                    <td>${flightDetails.flightName}</td>
+                    <td><form:input path="flightName" /></td>
                 </tr>
                 <tr>
                     <td>Source: </td>
-                    <td>${flightDetails.source}</td>
+                    <td><form:input path="source" /></td>
                 </tr>
                 <tr>
                     <td>Destination: </td>
-                    <td>${flightDetails.destination}</td>
+                    <td><form:input path="destination" /></td>
                 </tr>
-                 <tr>
-                     <td>Arrival Time: </td>
-                     <td>${flightDetails.arrivalTime}</td>
-                 </tr>
+                <tr>
+                    <td>Arrival Time: </td>
+                    <td><form:input path="arrivalTime" /></td>
+                </tr>
                 <tr>
                     <td>Departure Time: </td>
-                    <td>${flightDetails.departureTime}</td>
+                    <td><form:input path="departureTime" /></td>
                 </tr>
+
                 <tr>
                     <td>Seats: </td>
-                    <td>${flightDetails.seats}</td>
+                    <td><form:input path="seats" /></td>
                 </tr>
                 <tr>
                     <td>Date: </td>
-                    <td>${flightDetails.date}</td>
+                    <td><form:input path="date" /></td>
                 </tr>
+
                 <tr>
                     <td>Price: </td>
-                    <td>${flightDetails.price}</td>
+                    <td><form:input path="price" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="submit" value="SAVE"></td>
                 </tr>
             </table>
-
-        </form:form>
-
-	</br><button onclick="history.back()"> Back</button></body>
-
+            </form:form>
+	       </br><button onclick="history.back()"> Back</button>
     </div>
+</body>
 </html>

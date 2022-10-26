@@ -71,31 +71,6 @@
                     </table>
         </form:form>
 
-<h3>Booked Ticket Details</h3>
-        <form:form  method="post" modelAttribute="bookedTickets">
-
-                    <table border="1" cellpadding="5">
-
-                        <tr>
-                            <td>Flight ID: </td>
-                            <td>${bookedTickets.flightId}</td>
-                        </tr>
-                        <tr>
-                            <td>Seats Reserved: </td>
-                            <td>${bookedTickets.seatsReserved}</td>
-                        </tr>
-                        <tr>
-                            <td>Boarding Point: </td>
-                            <td>${bookedTickets.boardingPoint}</td>
-                        </tr>
-                        <tr>
-                            <td>Destination: </td>
-                            <td>${bookedTickets.destination}</td>
-                        </tr>
-
-                    </table>
-        </form:form>
-
 	</br><button onclick="history.back()"> Back</button></body>
 
     </div>

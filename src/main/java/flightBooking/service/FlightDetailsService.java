@@ -8,4 +8,5 @@ public interface FlightDetailsService {
     List<FlightDetails> fetchAllPerson();
     FlightDetails getPersonById(long personId);
     FlightDetails insertPerson(FlightDetails flightDetails);
+    List<FlightDetails> fetchAllAvailableFlight();
 }

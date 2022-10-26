@@ -49,16 +49,15 @@ public class PassengerController {
 
         }
     }
-    @RequestMapping("/fetchById/{id}")
+    @RequestMapping("/fetchPassengerById/{id}")
     public ModelAndView searchPassengerById(@PathVariable long  id) {
         ModelAndView mav = new ModelAndView("singlePassengerDetails");
         Passenger passenger = passengerService.getPersonById(id);
         mav.addObject("passenger", passenger);
         Address address = addressService.getAddressById(passenger.getIdAddress());
         mav.addObject("address", address);
-        BookedTickets bookedTickets = bookingService.getBookingByPassengerId(id);
-        mav.addObject("bookedTickets", bookedTickets);
-
+       /* BookedTickets bookedTickets = bookingService.getBookingByPassengerId(id);
+        mav.addObject("bookedTickets", bookedTickets);*/
         return mav;
     }
 
@@ -66,9 +65,12 @@ public class PassengerController {
     public ModelAndView editCustomerDetails(@PathVariable long  id) {
         ModelAndView mav = new ModelAndView("editPassenger");
         Passenger passenger = passengerService.getPersonById(id);
+        List<BookedTickets> bookedDetailsList=bookingService.getBookingByPassengerId(id);
+        mav.addObject("bookedDetails", bookedDetailsList);
+        mav.addObject("bookedTickets", new BookedTickets());
         mav.addObject("passenger", passenger);
-        BookedTickets bookedTickets = bookingService.getBookingByPassengerId(id);
-        mav.addObject("bookedTickets", bookedTickets);
+        /*BookedTickets bookedTickets = bookingService.getBookingByPassengerId(id);
+        mav.addObject("bookedTickets", bookedTickets);*/
 
         return mav;
     }
@@ -78,6 +80,15 @@ public class PassengerController {
         Address address = addressService.getAddressById(id);
         mav.addObject("address", address);
         return mav;
+    }
+    @RequestMapping("/bookedTicket")
+    public ModelAndView seeBookedTicket(@RequestParam long  id) {
+        ModelAndView mav = new ModelAndView("BookedFlightDetails");
+        List<BookedTickets> bookedDetailsList= bookingService.getBookingByPassengerId(id);
+        mav.addObject("bookedDetails",bookedDetailsList);
+        mav.addObject("bookedTickets",new BookedTickets());
+        return mav;
+
     }
     @PostMapping(value = "/passengerSave")
     public ModelAndView saveEditedCustomer(@ModelAttribute("passenger") Passenger passenger) {
@@ -115,8 +126,8 @@ public class PassengerController {
     }
     @RequestMapping(value="/availableTickets/{passengerId}", headers = "Accept=application/json")
     public ModelAndView allWithEdit(@PathVariable long passengerId) {
-        List<FlightDetails> flightDetailsList = flightDetailsService.fetchAllPerson();
-        ModelAndView mav = new ModelAndView("listOfAllFlightBook");
+        List<FlightDetails> flightDetailsList = flightDetailsService.fetchAllAvailableFlight();
+        ModelAndView mav = new ModelAndView("listOfAllFlight");
         mav.addObject("flightDetails", new FlightDetails());
         mav.addObject("flightDetailsList", flightDetailsList);
         Passenger passenger=passengerService.getPersonById(passengerId);
@@ -124,15 +135,50 @@ public class PassengerController {
 
         return mav;
     }
-    @RequestMapping("/bookTicket/{passengerId}")
-    public ModelAndView bookTicket(@PathVariable long passengerId,@RequestParam long  flightId) {
+    @RequestMapping("/bookTicket/{passengerId}/{flightId}")
+    public ModelAndView bookTicket(@PathVariable long passengerId,@PathVariable long  flightId) {
         ModelAndView mav = new ModelAndView("bookFlight");
         BookedTickets bookedTickets=new BookedTickets();
         bookedTickets.setPassengerId(passengerId);
         bookedTickets.setFlightId(flightId);
-        BookedTickets newBookedTicket= bookingService.insertPerson(bookedTickets);
-        mav.addObject("newBookedTicket",newBookedTicket);
+        mav.addObject("newBookedTicket",bookedTickets);
         return mav;
     }
+    @RequestMapping("/newTicket/{flightId}")
+    public ModelAndView bookedTicket(@ModelAttribute("newBookedTicket") BookedTickets bookedTickets,@PathVariable long flightId) {
+        ModelAndView mav = new ModelAndView("BookedFlightDetails");
+        FlightDetails flightDetails=flightDetailsService.getPersonById(flightId);
+        bookedTickets.setPrice(flightDetails.getPrice()*bookedTickets.getSeatsReserved());
+       BookedTickets bookedTicket=bookingService.insertPerson(bookedTickets);
+       long passengerId=bookedTicket.getPassengerId();
+       List<BookedTickets> bookedDetailsList= bookingService.getBookingByPassengerId(passengerId);
+       FlightDetails bookedFlight=flightDetails;
+       bookedFlight.setSeats((flightDetails.getSeats()-bookedTickets.getSeatsReserved()));
+       flightDetailsService.insertPerson(bookedFlight);
+        mav.addObject("bookedDetails",bookedDetailsList);
+        mav.addObject("bookedTickets",new BookedTickets());
+        return mav;
+    }
+    @RequestMapping (value = "/cancel/{passengerId}")
+    public ModelAndView cancelTicket(@PathVariable long passengerId) {
+        ModelAndView modelAndView =  new ModelAndView("cancelTicket");
+        List<BookedTickets> bookedDetailsList= bookingService.getBookingByPassengerId(passengerId);
+        modelAndView.addObject("bookedDetails",bookedDetailsList);
+        modelAndView.addObject("bookedTickets",new BookedTickets());
+        return modelAndView;
+    }
+    @RequestMapping(value = "/cancelTicket/{bookingId}")
+    public ModelAndView cancelBookedTicket(@PathVariable long bookingId) {
+        ModelAndView modelAndView =  new ModelAndView("cancelled");
+        BookedTickets bookedTicket=bookingService.getPersonById(bookingId);
+        long flightId=bookedTicket.getFlightId();
+       long seats=bookedTicket.getSeatsReserved();
+       FlightDetails flightDetails=flightDetailsService.getPersonById(flightId);
+       flightDetails.setSeats((flightDetails.getSeats()+seats));
+       flightDetailsService.insertPerson(flightDetails);
+       bookingService.deleteById(bookingId);
+        return modelAndView;
+    }
+
 
 }

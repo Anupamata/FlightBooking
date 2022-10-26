@@ -27,4 +27,9 @@ public class FlightDetailsDaoImpl implements FlightDetailsDao {
     public void  insertPerson(FlightDetails flightDetails) {
         flightDetailsRepository.save(flightDetails);
     }
+
+    @Override
+    public List<FlightDetails> fetchAllAvailableFlight() {
+        return flightDetailsRepository.fetchAllAvailableFlight();
+    }
 }

@@ -31,8 +31,13 @@ public class BookingServiceImpl  implements BookingService {
     }
 
     @Override
-    public BookedTickets getBookingByPassengerId(long id) {
-        BookedTickets bookedTickets=bookingDao.getBookingByPassengerId(id);
-        return bookedTickets;
+    public List<BookedTickets> getBookingByPassengerId(long id) {
+        return bookingDao.getBookingByPassengerId(id);
+
+    }
+
+    @Override
+    public void deleteById(long id) {
+        bookingDao.deleteById(id);
     }
 }

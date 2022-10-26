@@ -26,9 +26,13 @@ public class BookingDaoImpl implements BookingDao {
         bookedTicketsRepository.save(customer);
     }
 
+    @Transactional
+    public List<BookedTickets> getBookingByPassengerId(long id) {
+        return bookedTicketsRepository.getBookingByPassengerId(id);
+    }
+
     @Override
-    public BookedTickets getBookingByPassengerId(long id) {
-        BookedTickets bookedTickets=bookedTicketsRepository.getBookingByPassengerId(id);
-        return bookedTickets;
+    public void deleteById(long id) {
+       bookedTicketsRepository.deleteById(id);
     }
 }

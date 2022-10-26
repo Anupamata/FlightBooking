@@ -20,7 +20,8 @@
                 <th>Arrival Time</th>
                 <th>Departure Time</th>
                 <th>Seats</th>
-                <th>Action</th>
+                <th>Date</th>
+                <th>Price</th>
 
 
             </tr>
@@ -33,13 +34,11 @@
                 <td>${flightDetails.arrivalTime}</td>
                 <td>${flightDetails.departureTime}</td>
                 <td>${flightDetails.seats}</td>
-                <form modelAttribute="passenger" >
-                <td><a href="/FlightBooking/passenger/bookTicket/${passenger.passengerId}?id=${flightDetails.flightId}">Book Now</a></td></form>
-
+                <td>${flightDetails.date}</td>
+                <td>${flightDetails.price}</td>
             </tr>
             </c:forEach>
         </table>
-                </br><a href="http://localhost:8089/FruitStall/"><i>HOME</a></i>
 
     </div>
     </body>

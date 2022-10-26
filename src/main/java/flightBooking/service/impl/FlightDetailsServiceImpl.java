@@ -28,4 +28,9 @@ public class FlightDetailsServiceImpl implements FlightDetailsService {
         flightDetailsDao.insertPerson(flightDetails);
         return flightDetails;
     }
+
+    @Override
+    public List<FlightDetails> fetchAllAvailableFlight() {
+        return flightDetailsDao.fetchAllAvailableFlight();
+    }
 }

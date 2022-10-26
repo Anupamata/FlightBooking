@@ -12,15 +12,17 @@
     <center>
     <h2>
     Welcome <i>${passenger.passengerName}</i><br></h2>
-   <form method="get"  action="/FlightBooking/passenger/fetchById/${passenger.passengerId}"></br>
+   <form method="get"  action="/FlightBooking/passenger/fetchPassengerById/${passenger.passengerId}"></br>
         <input style="height:50px;width:120px" type="submit"  value="View My Details"/></form>
    <form method="get"  action="/FlightBooking/passenger/edit/${passenger.passengerId}"></br>
         <input style="height:50px;width:120px" type="submit"  value="Edit  My Details"/></form>
    <form method="get"  action="/FlightBooking/passenger/fetchById"></br>
         <input style="height:50px;width:120px" type="submit"  value="Search for Flight"/></form>
    <form method="get"  action="/FlightBooking/passenger/availableTickets/${passenger.passengerId}"></br>
-        <input style="height:50px;width:120px" type="submit"  value="   Loan Details   "/></form>
-   <form method="get"  action="/Evaluation/"></br>
+        <input style="height:50px;width:120px" type="submit"  value="   Ticket Booking   "/></form>
+   <form method="GET"  action="/FlightBooking/passenger/cancel/${passenger.passengerId}"></br>
+           <input style="height:50px;width:120px" type="submit"  value="   Ticket Cancel   "/></form>
+   <form method="get"  action="/FlightBooking/"></br>
         <input style="height:50px;width:120px" type="submit"  value="   Log Out   "/></form>
     </center>
     </body>

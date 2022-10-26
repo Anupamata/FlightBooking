@@ -10,35 +10,36 @@
 </head>
 <body>
     <div align="center">
-        <h2>Add New Loan</h2>
-        <form:form  method="post" modelAttribute="newBookedTicket" action="/Evaluation/manager/saveAddress/${customer.customerId}">
+        <h2>Book Tickets</h2>
+        <form:form  method="post" modelAttribute="newBookedTicket" action="/FlightBooking/passenger/newTicket/${newBookedTicket.flightId}">
             <table border="0" cellpadding="5">
+                <tr>
+                    <td>Passenger ID: </td>
+                    <td>${newBookedTicket.passengerId}
+                        <form:hidden path="passengerId"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Flight ID: </td>
+                    <td>${newBookedTicket.flightId}
+                        <form:hidden path="flightId"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Boarding Point: </td>
+                    <td><form:input path="boardingPoint" /></td>
+                </tr>
+                <tr>
+                    <td>Destination: </td>
+                    <td><form:input path="destination" /></td>
+                </tr>
 
                 <tr>
-                    <td>House Name: </td>
-                    <td><form:input path="houseName" /></td>
-                </tr>
-                <tr>
-                    <td>City: </td>
-                    <td><form:input path="city" /></td>
-                </tr>
-
-                <tr>
-                    <td>State: </td>
-                    <td><form:input path="state" /></td>
-                </tr>
-                <tr>
-                    <td>Pin Code: </td>
-                    <td><form:input path="pin" /></td>
-                </tr>
-                <tr>
-                <form modelAttribute="customer" >
-                </tr>
-                <tr>
-                   <td> <input style="height:50px;width:120px" type="submit"  value="Save"/></td>
+                    <td>Seats Reserved: </td>
+                    <td><form:input path="seatsReserved" /></td>
                 </tr>
             </table>
-                </form>
+                 <input style="height:50px;width:120px" type="submit"  value="Save"/>
         </form:form>
       </br><button onclick="history.back()"> Back</button>
     </div>

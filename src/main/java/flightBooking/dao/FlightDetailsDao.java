@@ -10,4 +10,5 @@ public interface FlightDetailsDao {
     List<FlightDetails> fetchAllPersons();
     Optional<FlightDetails> getPersonById(long id);
     void insertPerson(FlightDetails flightDetails);
+    List<FlightDetails> fetchAllAvailableFlight();
 }

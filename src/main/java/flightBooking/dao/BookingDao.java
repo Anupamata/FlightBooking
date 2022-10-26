@@ -9,5 +9,7 @@ public interface BookingDao {
     List<BookedTickets> fetchAllPersons();
     Optional<BookedTickets> getPersonById(long id);
     void insertPerson(BookedTickets customer);
-    BookedTickets getBookingByPassengerId(long id);
+    List<BookedTickets> getBookingByPassengerId(long id);
+
+    void deleteById(long id);
 }
