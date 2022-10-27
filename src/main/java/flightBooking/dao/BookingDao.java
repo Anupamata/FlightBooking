@@ -12,4 +12,5 @@ public interface BookingDao {
     List<BookedTickets> getBookingByPassengerId(long id);
 
     void deleteById(long id);
+    List<BookedTickets> getBookingByFlightId(long id);
 }

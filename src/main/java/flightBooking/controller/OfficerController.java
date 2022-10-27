@@ -1,22 +1,25 @@
 package flightBooking.controller;
 
+import flightBooking.model.BookedTickets;
 import flightBooking.model.FlightDetails;
 import flightBooking.model.Officer;
+import flightBooking.model.Passenger;
 import flightBooking.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value = "/officer")
 public class OfficerController {
     @Autowired
     private OfficerService officerService;
+    @Autowired
+    private PassengerService passengerService;
+
     @Autowired
     private AddressService addressService;
     @Autowired
@@ -51,6 +54,25 @@ public class OfficerController {
         modelAndView.addObject("flightDetails" , new FlightDetails());
         return modelAndView;
     }
+    @RequestMapping("/listOfPassengers")
+    public ModelAndView listOfPassengers(@RequestParam long  id) {
+        ModelAndView mav = new ModelAndView("listOfPassengers");
+        ArrayList<Passenger> passengerDetailsList = new ArrayList<>();
+        List <BookedTickets> bookedTicketList =bookingService.getBookingByFlightId(id);
+        for(BookedTickets bookedTickets:bookedTicketList)
+        {
+            Passenger passengerDetails = passengerService.getPersonById(bookedTickets.getPassengerId());
+            passengerDetailsList.add(passengerDetails);
+        } List<Passenger> passengerDetailsListS = passengerDetailsList
+                .stream()
+                .distinct()
+                .collect(Collectors.toList());
+        mav.addObject("passengerDetailsList",passengerDetailsListS);
+        mav.addObject("passenger",new Passenger());
+        mav.addObject("bookedDetails",bookedTicketList);
+        mav.addObject("bookedTickets",new BookedTickets());
+        return mav;
+    }
     @RequestMapping("/addFlight")
     public ModelAndView addNewFlight() {
         ModelAndView modelAndView =  new ModelAndView("addNewFlight");
@@ -65,3 +87,4 @@ public class OfficerController {
         return mv;
     }
 }
+

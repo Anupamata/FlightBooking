@@ -37,6 +37,11 @@ public class BookingServiceImpl  implements BookingService {
     }
 
     @Override
+    public List<BookedTickets> getBookingByFlightId(long id) {
+        return bookingDao.getBookingByFlightId(id);
+    }
+
+    @Override
     public void deleteById(long id) {
         bookingDao.deleteById(id);
     }

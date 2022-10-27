@@ -35,4 +35,9 @@ public class BookingDaoImpl implements BookingDao {
     public void deleteById(long id) {
        bookedTicketsRepository.deleteById(id);
     }
+
+    @Override
+    public List<BookedTickets> getBookingByFlightId(long id) {
+        return bookedTicketsRepository.getBookingByFlightId(id);
+    }
 }

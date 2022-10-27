@@ -34,7 +34,7 @@
             </c:forEach>
         </table>
 
-
+</br><button onclick="history.back()"> Back</button>
     </div>
     </body>
     </html>

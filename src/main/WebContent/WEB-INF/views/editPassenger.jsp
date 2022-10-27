@@ -54,7 +54,7 @@
             </table>
              <a href="/FlightBooking/passenger/editAddress?id=${passenger.idAddress}">Edit Address Details</a>
              <br>
-             <a href="/FlightBooking/passenger/bookedTicket?id=${passenger.idAddress}">See Booked Flight details</a>
+             <a href="/FlightBooking/passenger/bookedTicket?id=${passenger.passengerId}">See Booked Flight details</a>
         </form:form>
         </br><button onclick="history.back()"> Back</button>
     </div>

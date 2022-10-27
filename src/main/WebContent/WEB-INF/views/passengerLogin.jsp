@@ -8,7 +8,7 @@
 	</head>
 	<body>
 	    <center>
-	        <h2 align="center">Customer Login</h2>
+	        <h2 align="center">Passenger Login</h2>
 	        <div>&nbsp;</div>
 	        <form id="user_form" action="${pageContext.request.contextPath}/passenger/loginResult" method="POST">
 	                <label for="name">Username:</label>

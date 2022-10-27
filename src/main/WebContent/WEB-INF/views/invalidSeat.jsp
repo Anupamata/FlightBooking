@@ -1,0 +1,1 @@
+Reserved seats count must be less than  Available seats

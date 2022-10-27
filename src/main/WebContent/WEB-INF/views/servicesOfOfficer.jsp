@@ -16,9 +16,7 @@
         <input style="height:50px;width:120px" type="submit"  value="View Flight List"/></form>
    <form method="get"  action="/FlightBooking/officer/addFlight"></br>
         <input style="height:50px;width:120px" type="submit"  value="Add Flight"/></form>
-   <form method="get"  action="/Evaluation/manager/newCustomer"></br>
-        <input style="height:50px;width:120px" type="submit"  value="New Customer"/></form>
-   <form method="get"  action="/Evaluation/"></br>
+   <form method="get"  action="/FlightBooking/"></br>
         <input style="height:50px;width:120px" type="submit"  value="   Log Out   "/></form>
     </center>
     </body>

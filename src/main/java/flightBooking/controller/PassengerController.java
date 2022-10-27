@@ -149,15 +149,22 @@ public class PassengerController {
         ModelAndView mav = new ModelAndView("BookedFlightDetails");
         FlightDetails flightDetails=flightDetailsService.getPersonById(flightId);
         bookedTickets.setPrice(flightDetails.getPrice()*bookedTickets.getSeatsReserved());
-       BookedTickets bookedTicket=bookingService.insertPerson(bookedTickets);
-       long passengerId=bookedTicket.getPassengerId();
-       List<BookedTickets> bookedDetailsList= bookingService.getBookingByPassengerId(passengerId);
-       FlightDetails bookedFlight=flightDetails;
-       bookedFlight.setSeats((flightDetails.getSeats()-bookedTickets.getSeatsReserved()));
-       flightDetailsService.insertPerson(bookedFlight);
-        mav.addObject("bookedDetails",bookedDetailsList);
-        mav.addObject("bookedTickets",new BookedTickets());
-        return mav;
+        if(bookedTickets.getSeatsReserved()<=flightDetails.getSeats()) {
+            BookedTickets bookedTicket = bookingService.insertPerson(bookedTickets);
+            long passengerId = bookedTicket.getPassengerId();
+            List<BookedTickets> bookedDetailsList = bookingService.getBookingByPassengerId(passengerId);
+            FlightDetails bookedFlight = flightDetails;
+            bookedFlight.setSeats((flightDetails.getSeats() - bookedTickets.getSeatsReserved()));
+            flightDetailsService.insertPerson(bookedFlight);
+            mav.addObject("bookedDetails", bookedDetailsList);
+            mav.addObject("bookedTickets", new BookedTickets());
+            return mav;
+        }
+        else
+        {
+            mav.setViewName("invalidSeat");
+            return mav;
+        }
     }
     @RequestMapping (value = "/cancel/{passengerId}")
     public ModelAndView cancelTicket(@PathVariable long passengerId) {

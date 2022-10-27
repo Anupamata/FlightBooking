@@ -1,5 +1,6 @@
 package flightBooking.model;
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name="passenger")
@@ -88,5 +89,22 @@ public class Passenger {
         this.password = password;
     }
 
-
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        Passenger user = (Passenger) obj;
+        return passengerId == user.passengerId;
+    }
+    @Override
+    public int hashCode() {
+        return Objects.hash(passengerId);
+    }
 }

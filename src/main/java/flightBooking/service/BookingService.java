@@ -9,5 +9,7 @@ public interface BookingService {
     BookedTickets getPersonById(long personId);
     BookedTickets insertPerson(BookedTickets bookedTickets);
     List<BookedTickets> getBookingByPassengerId(long id);
+    List<BookedTickets> getBookingByFlightId(long id);
+
     void deleteById(long id);
 }

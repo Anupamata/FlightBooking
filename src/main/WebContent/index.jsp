@@ -10,7 +10,7 @@
     </head>
     <body>
     <div align="center">
-    <h2>BANK &nbsp; MANAGEMENT &nbsp;SYSTEM</h2><br>
+    <h2>FLIGHT &nbsp; BOOKING &nbsp;SYSTEM</h2><br>
         <form method="get" action="/FlightBooking/officer/login">
             <input style="height:50px;width:120px" type="submit" value="OFFICER"/></td><br> <br>
         </form>

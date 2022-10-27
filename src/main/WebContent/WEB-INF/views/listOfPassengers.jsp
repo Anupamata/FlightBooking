@@ -10,7 +10,7 @@
     <body>
     <div align="center">
 
-        <h2>Details of Your Booked Flights</h2>
+        <h2>Details of  Booked Flights</h2>
         <table border="1" cellpadding="5">
             <tr>
                 <th>Booking ID</th>
@@ -19,7 +19,7 @@
                 <th>Boarding Point</th>
                 <th>Destination</th>
                 <th>Seats Reserved</th>
-                <th>Action</th>
+                <th>Price</th>
             </tr>
             <c:forEach items="${bookedDetails}" var="bookedTickets">
             <tr>
@@ -29,11 +29,38 @@
                 <td>${bookedTickets.boardingPoint}</td>
                 <td>${bookedTickets.destination}</td>
                 <td>${bookedTickets.seatsReserved}</td>
-                <td><a href="/FlightBooking/passenger/cancelTicket/${bookedTickets.bookingId}">Cancel</a></td>
-
+                <td>${bookedTickets.price}</td>
             </tr>
             </c:forEach>
         </table>
+        <br>
+        <br>
+        <h2>Details of Passengers</h2>
+        <table border="1" cellpadding="5">
+            <tr>
+                <th>Passenger ID</th>
+                <th>Passenger Name</th>
+                <th>Passport Number</th>
+                <th>username</th>
+                <th>Password</th>
+                <th>Mobile Number</th>
+                <th>Gender</th>
+                <th>Address ID</th>
+            </tr>
+            <c:forEach items="${passengerDetailsList}" var="passenger">
+            <tr>
+                <td>${passenger.passengerId}</td>
+                <td>${passenger.passengerName}</td>
+                <td>${passenger.passportNumber}</td>
+                <td>${passenger.username}</td>
+                <td>${passenger.password}</td>
+                <td>${passenger.mobileNumber}</td>
+                <td>${passenger.gender}</td>
+                <td>${passenger.idAddress}</td>
+            </tr>
+            </c:forEach>
+        </table>
+
 </br><button onclick="history.back()"> Back</button>
     </div>
     </body>

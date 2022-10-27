@@ -10,4 +10,6 @@ import java.util.List;
 public interface BookedTicketsRepository extends JpaRepository<BookedTickets,Long> {
     @Query("select bookedTicket from BookedTickets bookedTicket where bookedTicket.passengerId=:passengerId")
     List<BookedTickets> getBookingByPassengerId(@Param("passengerId")long id);
+    @Query("select bookedTicket from BookedTickets bookedTicket where bookedTicket.flightId=:flightId")
+    List<BookedTickets> getBookingByFlightId(@Param("flightId")long id);
 }

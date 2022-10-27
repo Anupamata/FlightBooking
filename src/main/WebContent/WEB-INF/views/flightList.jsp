@@ -22,6 +22,7 @@
                 <th>Seats</th>
                 <th>Date</th>
                 <th>Price</th>
+                <th>Action</th>
 
 
             </tr>
@@ -36,10 +37,12 @@
                 <td>${flightDetails.seats}</td>
                 <td>${flightDetails.date}</td>
                 <td>${flightDetails.price}</td>
+                <td><a href="/FlightBooking/officer/listOfPassengers?id=${flightDetails.flightId}">Passengers List</a></td>
+
             </tr>
             </c:forEach>
         </table>
-
+</br><button onclick="history.back()"> Back</button>
     </div>
     </body>
     </html>
