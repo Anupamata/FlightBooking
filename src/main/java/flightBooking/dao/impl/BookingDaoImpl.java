@@ -13,16 +13,16 @@ public class BookingDaoImpl implements BookingDao {
     @Autowired
     BookedTicketsRepository bookedTicketsRepository;
     @Transactional
-    public List<BookedTickets> fetchAllPersons() {
+    public List<BookedTickets> fetchAllBooking() {
         return bookedTicketsRepository.findAll();
     }
     @Transactional
-    public Optional<BookedTickets> getPersonById(long id) {
+    public Optional<BookedTickets> getBookingById(long id) {
         return bookedTicketsRepository.findById(id);
 
     }
     @Transactional
-    public void  insertPerson(BookedTickets customer) {
+    public void insertBooking(BookedTickets customer) {
         bookedTicketsRepository.save(customer);
     }
 
@@ -32,7 +32,7 @@ public class BookingDaoImpl implements BookingDao {
     }
 
     @Override
-    public void deleteById(long id) {
+    public void deleteBookingById(long id) {
        bookedTicketsRepository.deleteById(id);
     }
 

@@ -14,19 +14,19 @@ public class BookingServiceImpl  implements BookingService {
     BookingDao bookingDao;
 
     @Override
-    public List<BookedTickets> fetchAllPerson() {
-        return bookingDao.fetchAllPersons();
+    public List<BookedTickets> fetchAllBooking() {
+        return bookingDao.fetchAllBooking();
     }
 
     @Override
-    public BookedTickets getPersonById(long personId) {
-        Optional<BookedTickets> optionalPersonModel = bookingDao.getPersonById(personId);
+    public BookedTickets getBookingById(long personId) {
+        Optional<BookedTickets> optionalPersonModel = bookingDao.getBookingById(personId);
         return optionalPersonModel.orElse(null);
     }
 
     @Override
-    public BookedTickets insertPerson(BookedTickets customer) {
-        bookingDao.insertPerson(customer);
+    public BookedTickets insertBookingDetails(BookedTickets customer) {
+        bookingDao.insertBooking(customer);
         return customer;
     }
 
@@ -43,6 +43,6 @@ public class BookingServiceImpl  implements BookingService {
 
     @Override
     public void deleteById(long id) {
-        bookingDao.deleteById(id);
+        bookingDao.deleteBookingById(id);
     }
 }

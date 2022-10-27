@@ -13,7 +13,7 @@ public class PassengerDaoImpl implements PassengerDao {
     @Autowired
     PassengerRepository passengerRepository;
     @Transactional
-    public List<Passenger> fetchAllPersons() {
+    public List<Passenger> fetchAllPassengers() {
         return passengerRepository.findAll();
     }
     @Transactional
@@ -21,12 +21,12 @@ public class PassengerDaoImpl implements PassengerDao {
         return passengerRepository.login(username,password);
     }
     @Transactional
-    public Optional<Passenger> getPersonById(long id) {
+    public Optional<Passenger> getPassengerById(long id) {
         return passengerRepository.findById(id);
 
     }
     @Transactional
-    public void  insertPerson(Passenger passenger) {
+    public void insertPassenger(Passenger passenger) {
         passengerRepository.save(passenger);
     }
 }

@@ -5,8 +5,8 @@ import flightBooking.model.FlightDetails;
 import java.util.List;
 
 public interface FlightDetailsService {
-    List<FlightDetails> fetchAllPerson();
-    FlightDetails getPersonById(long personId);
-    FlightDetails insertPerson(FlightDetails flightDetails);
+    List<FlightDetails> fetchAllFlightDetails();
+    FlightDetails getFlightById(long personId);
+    FlightDetails insertFlight(FlightDetails flightDetails);
     List<FlightDetails> fetchAllAvailableFlight();
 }

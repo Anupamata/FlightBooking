@@ -49,7 +49,7 @@ public class OfficerController {
     @RequestMapping(value = "/flightList",method = RequestMethod.GET)
     public ModelAndView flightList() {
         ModelAndView modelAndView =  new ModelAndView("flightList");
-        List<FlightDetails> flightDetailsList=flightDetailsService.fetchAllPerson();
+        List<FlightDetails> flightDetailsList=flightDetailsService.fetchAllFlightDetails();
         modelAndView.addObject("flightDetailsList" , flightDetailsList);
         modelAndView.addObject("flightDetails" , new FlightDetails());
         return modelAndView;
@@ -61,7 +61,7 @@ public class OfficerController {
         List <BookedTickets> bookedTicketList =bookingService.getBookingByFlightId(id);
         for(BookedTickets bookedTickets:bookedTicketList)
         {
-            Passenger passengerDetails = passengerService.getPersonById(bookedTickets.getPassengerId());
+            Passenger passengerDetails = passengerService.getPassengerById(bookedTickets.getPassengerId());
             passengerDetailsList.add(passengerDetails);
         } List<Passenger> passengerDetailsListS = passengerDetailsList
                 .stream()
@@ -83,7 +83,7 @@ public class OfficerController {
     @RequestMapping(value = "/saveFlight", method = RequestMethod.POST)
     public ModelAndView saveFlight(@ModelAttribute("flightDetails") FlightDetails flightDetails) {
         ModelAndView mv =  new ModelAndView("successPage");
-        flightDetailsService.insertPerson(flightDetails);
+        flightDetailsService.insertFlight(flightDetails);
         return mv;
     }
 }

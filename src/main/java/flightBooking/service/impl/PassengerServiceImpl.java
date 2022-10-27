@@ -13,7 +13,7 @@ public class PassengerServiceImpl implements PassengerService {
     PassengerDao passengerDao;
     @Override
     public List<Passenger> fetchAllPerson() {
-        return passengerDao.fetchAllPersons();
+        return passengerDao.fetchAllPassengers();
     }
 
     @Override
@@ -21,13 +21,13 @@ public class PassengerServiceImpl implements PassengerService {
         return passengerDao.login(username,password);
     }
     @Override
-    public Passenger getPersonById(long personId)  {
-        Optional<Passenger> optionalPersonModel=passengerDao.getPersonById(personId);
+    public Passenger getPassengerById(long personId)  {
+        Optional<Passenger> optionalPersonModel=passengerDao.getPassengerById(personId);
         return optionalPersonModel.orElse(null);
     }
     @Override
-    public Passenger insertPerson(Passenger customer) {
-        passengerDao.insertPerson(customer);
+    public Passenger insertPassenger(Passenger customer) {
+        passengerDao.insertPassenger(customer);
         return customer;
     }
 }

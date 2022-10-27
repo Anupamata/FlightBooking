@@ -15,7 +15,7 @@ public class OfficerDaoImpl implements OfficerDao {
     @Autowired
     OfficerRepository officerRepository;
     @Transactional
-    public List<Officer> fetchAllPersons() {
+    public List<Officer> fetchAllOfficers() {
         return officerRepository.findAll();
     }
     @Transactional
@@ -23,12 +23,12 @@ public class OfficerDaoImpl implements OfficerDao {
         return officerRepository.login(username,password);
     }
     @Transactional
-    public Optional<Officer> getPersonById(long id) {
+    public Optional<Officer> getOfficerById(long id) {
         return officerRepository.findById(id);
 
     }
     @Transactional
-    public void  insertPerson(Officer officer) {
+    public void insertOfficer(Officer officer) {
         officerRepository.save(officer);
     }
 }

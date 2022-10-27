@@ -1,9 +1,7 @@
 package flightBooking.service.impl;
 
 import flightBooking.dao.OfficerDao;
-import flightBooking.dao.PassengerDao;
 import flightBooking.model.Officer;
-import flightBooking.model.Passenger;
 import flightBooking.service.OfficerService;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -15,7 +13,7 @@ public class OfficerServiceImpl implements OfficerService {
     OfficerDao officerDao;
     @Override
     public List<Officer> fetchAllPerson() {
-        return officerDao.fetchAllPersons();
+        return officerDao.fetchAllOfficers();
     }
 
     @Override
@@ -23,13 +21,13 @@ public class OfficerServiceImpl implements OfficerService {
         return officerDao.login(username,password);
     }
     @Override
-    public Officer getPersonById(long personId)  {
-        Optional<Officer> optionalPersonModel=officerDao.getPersonById(personId);
+    public Officer getOfficerById(long personId)  {
+        Optional<Officer> optionalPersonModel=officerDao.getOfficerById(personId);
         return optionalPersonModel.orElse(null);
     }
     @Override
-    public Officer insertPerson(Officer officer) {
-        officerDao.insertPerson(officer);
+    public Officer insertOfficer(Officer officer) {
+        officerDao.insertOfficer(officer);
         return officer;
     }
 }

@@ -6,9 +6,8 @@ import java.util.List;
 import java.util.Optional;
 
 public interface PassengerDao {
-    List<Passenger> fetchAllPersons();
-
+    List<Passenger> fetchAllPassengers();
     Passenger login(String username, String password);
-    Optional<Passenger> getPersonById(long id);
-    void insertPerson(Passenger passenger);
+    Optional<Passenger> getPassengerById(long id);
+    void insertPassenger(Passenger passenger);
 }

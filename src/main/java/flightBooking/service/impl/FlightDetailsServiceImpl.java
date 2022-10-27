@@ -13,19 +13,19 @@ public class FlightDetailsServiceImpl implements FlightDetailsService {
     FlightDetailsDao flightDetailsDao;
 
     @Override
-    public List<FlightDetails> fetchAllPerson() {
-        return flightDetailsDao.fetchAllPersons();
+    public List<FlightDetails> fetchAllFlightDetails() {
+        return flightDetailsDao.fetchAllFlight();
     }
 
     @Override
-    public FlightDetails getPersonById(long personId) {
-        Optional<FlightDetails> optionalPersonModel = flightDetailsDao.getPersonById(personId);
+    public FlightDetails getFlightById(long personId) {
+        Optional<FlightDetails> optionalPersonModel = flightDetailsDao.getFlightById(personId);
         return optionalPersonModel.orElse(null);
     }
 
     @Override
-    public FlightDetails insertPerson(FlightDetails flightDetails) {
-        flightDetailsDao.insertPerson(flightDetails);
+    public FlightDetails insertFlight(FlightDetails flightDetails) {
+        flightDetailsDao.insertFlight(flightDetails);
         return flightDetails;
     }
 

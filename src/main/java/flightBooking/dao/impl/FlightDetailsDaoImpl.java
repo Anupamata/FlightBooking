@@ -15,16 +15,16 @@ public class FlightDetailsDaoImpl implements FlightDetailsDao {
     @Autowired
     FlightDetailsRepository flightDetailsRepository;
     @Transactional
-    public List<FlightDetails> fetchAllPersons() {
+    public List<FlightDetails> fetchAllFlight() {
         return flightDetailsRepository.findAll();
     }
     @Transactional
-    public Optional<FlightDetails> getPersonById(long id) {
+    public Optional<FlightDetails> getFlightById(long id) {
         return flightDetailsRepository.findById(id);
 
     }
     @Transactional
-    public void  insertPerson(FlightDetails flightDetails) {
+    public void insertFlight(FlightDetails flightDetails) {
         flightDetailsRepository.save(flightDetails);
     }
 
