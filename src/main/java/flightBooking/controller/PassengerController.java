@@ -1,5 +1,6 @@
 package flightBooking.controller;
 
+
 import flightBooking.model.Address;
 import flightBooking.model.BookedTickets;
 import flightBooking.model.FlightDetails;
@@ -9,9 +10,11 @@ import flightBooking.service.BookingService;
 import flightBooking.service.FlightDetailsService;
 import flightBooking.service.PassengerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -26,7 +29,9 @@ public class PassengerController {
     @Autowired
     private FlightDetailsService flightDetailsService;
 
-    @GetMapping(value = "/login")
+
+
+/*    @GetMapping(value = "/login")
     public ModelAndView passengerLogin() {
         ModelAndView modelAndView =  new ModelAndView("passengerLogin");
         modelAndView.addObject("passenger" , new Passenger());
@@ -47,7 +52,7 @@ public class PassengerController {
             return modelAndView;
 
         }
-    }
+    }*/
     @RequestMapping("/fetchPassengerById/{id}")
     public ModelAndView searchPassengerById(@PathVariable long  id) {
         ModelAndView mav = new ModelAndView("singlePassengerDetails");

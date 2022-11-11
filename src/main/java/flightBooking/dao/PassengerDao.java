@@ -7,7 +7,10 @@ import java.util.Optional;
 
 public interface PassengerDao {
     List<Passenger> fetchAllPassengers();
-    Passenger login(String username, String password);
+//    Passenger login(String username, String password);
     Optional<Passenger> getPassengerById(long id);
     void insertPassenger(Passenger passenger);
+    public Passenger findByUserName(String userName);
+
+    Passenger getPassengerByUserName(String loggedInUserName);
 }

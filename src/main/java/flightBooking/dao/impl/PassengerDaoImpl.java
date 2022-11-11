@@ -16,10 +16,10 @@ public class PassengerDaoImpl implements PassengerDao {
     public List<Passenger> fetchAllPassengers() {
         return passengerRepository.findAll();
     }
-    @Transactional
+/*    @Transactional
     public Passenger login(String username, String password) {
         return passengerRepository.login(username,password);
-    }
+    }*/
     @Transactional
     public Optional<Passenger> getPassengerById(long id) {
         return passengerRepository.findById(id);
@@ -28,5 +28,16 @@ public class PassengerDaoImpl implements PassengerDao {
     @Transactional
     public void insertPassenger(Passenger passenger) {
         passengerRepository.save(passenger);
+    }
+    public Passenger findByUserName(String userName) {
+
+        Passenger user=passengerRepository.findByUsername(userName);
+        return user;
+
+    }
+
+    @Override
+    public Passenger getPassengerByUserName(String loggedInUserName) {
+        return passengerRepository.getPassengerByUserName(loggedInUserName);
     }
 }

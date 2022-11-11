@@ -16,10 +16,10 @@ public class PassengerServiceImpl implements PassengerService {
         return passengerDao.fetchAllPassengers();
     }
 
-    @Override
-    public Passenger login(String username, String password) {
-        return passengerDao.login(username,password);
-    }
+  /*  @Override
+        public Passenger login(String username, String password) {
+            return passengerDao.login(username,password);
+        }*/
     @Override
     public Passenger getPassengerById(long personId)  {
         Optional<Passenger> optionalPersonModel=passengerDao.getPassengerById(personId);
@@ -30,4 +30,15 @@ public class PassengerServiceImpl implements PassengerService {
         passengerDao.insertPassenger(customer);
         return customer;
     }
+
+    @Override
+    public Passenger findByUserName(String username) {
+        return passengerDao.findByUserName(username);
+    }
+
+    @Override
+    public Passenger getPassengerByUserName(String loggedInUserName) {
+        return passengerDao.getPassengerByUserName(loggedInUserName);
+    }
+
 }

@@ -18,5 +18,8 @@
             <input style="height:50px;width:120px" type="submit" value="PASSENGER"/></td>
         </form>
     </div>
+
+    <br><br>
+    <a href="helloworld">Click here to read hello message </a><br/><a href="admin">Admin Page </a>
    </body>
    </html>

@@ -31,6 +31,8 @@
     <bean id="addressDao" class="flightBooking.dao.impl.AddressDaoImpl"/>
 
 
+
+
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="dataSource" ref="dataSource"/>
     </bean>
@@ -57,4 +59,81 @@
         <property name="username" value="root"/>
         <property name="password" value="root"/>
     </bean>
+<!--    &lt;!&ndash; Hibernate 4 SessionFactory Bean definition &ndash;&gt;
+    <bean id="hibernate4AnnotatedSessionFactory"
+          class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect
+                </prop>
+                <prop key="hibernate.show_sql">true</prop>
+            </props>
+        </property>
+    </bean>-->
 </beans>
+
+        <!--
+        <?xml version="1.0" encoding="UTF-8"?>
+        <beans xmlns="http://www.springframework.org/schema/beans"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xmlns:context="http://www.springframework.org/schema/context"
+               xmlns:mvc="http://www.springframework.org/schema/mvc"
+               xsi:schemaLocation="http://www.springframework.org/schema/beans
+                http://www.springframework.org/schema/beans/spring-beans.xsd
+                http://www.springframework.org/schema/context
+                http://www.springframework.org/schema/context/spring-context.xsd
+                http://www.springframework.org/schema/mvc
+                http://www.springframework.org/schema/mvc/spring-mvc.xsd
+                http://www.springframework.org/schema/data/jpa
+                http://www.springframework.org/schema/data/jpa/spring-jpa.xsd"
+               xmlns:jpa="http://www.springframework.org/schema/data/jpa">
+            <context:component-scan base-package="flightBooking.controller"/>
+            <mvc:resources mapping="/resources/**" location="/resources/"/>
+            <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+                <property name="prefix" value="/WEB-INF/views/"/>
+                <property name="suffix" value=".jsp"/>
+            </bean>
+            <mvc:annotation-driven/>
+            <bean id="passengerService" class="flightBooking.service.impl.PassengerServiceImpl"/>
+            <bean id="passengerDao" class="flightBooking.dao.impl.PassengerDaoImpl"/>
+            <bean id="officerService" class="flightBooking.service.impl.OfficerServiceImpl"/>
+            <bean id="officerDao" class="flightBooking.dao.impl.OfficerDaoImpl"/>
+            <bean id="bookingService" class="flightBooking.service.impl.BookingServiceImpl"/>
+            <bean id="bookingDao" class="flightBooking.dao.impl.BookingDaoImpl"/>
+            <bean id="flightDetailsService" class="flightBooking.service.impl.FlightDetailsServiceImpl"/>
+            <bean id="flightDetailsDao" class="flightBooking.dao.impl.FlightDetailsDaoImpl"/>
+            <bean id="addressService" class="flightBooking.service.impl.AddressServiceImpl"/>
+            <bean id="addressDao" class="flightBooking.dao.impl.AddressDaoImpl"/>
+            <bean id="userDetailsService" class="flightBooking.service.impl.UserDetailsServiceImpl"/>
+
+
+
+            <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+                <property name="dataSource" ref="dataSource"/>
+            </bean>
+            <jpa:repositories base-package="flightBooking.repository" entity-manager-factory-ref="emf"/>
+            <bean id="emf" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+                <property name="packagesToScan" value="flightBooking.model"/>
+                <property name="dataSource" ref="dataSource"/>
+                <property name="jpaProperties">
+                    <props>
+                        <prop key="hibernate.show_sql">true</prop>
+                        <prop key="hibernate.format_sql">true</prop>
+                        &lt;!&ndash;<prop key="hibernate.hbm2ddl.auto">create</prop>&ndash;&gt;
+                        <prop key="hibernate.dialect">org.hibernate.dialect.MySQL55Dialect</prop>
+                    </props>
+                </property>
+                <property name="persistenceProvider">
+                    <bean class="org.hibernate.jpa.HibernatePersistenceProvider"/>
+                </property>
+            </bean>
+            <bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+                <property name="driverClass" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url"
+                          value="jdbc:mysql://localhost:3306/flightbooking"/>
+                <property name="username" value="root"/>
+                <property name="password" value="root"/>
+            </bean>
+        </beans>
+        -->
