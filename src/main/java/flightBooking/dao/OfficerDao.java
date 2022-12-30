@@ -8,7 +8,7 @@ import java.util.Optional;
 public interface OfficerDao {
     List<Officer> fetchAllOfficers();
 
-    Officer login(String username, String password);
+//    Officer login(String username, String password);
     Optional<Officer> getOfficerById(long id);
     void insertOfficer(Officer officer);
 }

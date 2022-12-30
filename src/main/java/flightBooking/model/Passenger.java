@@ -24,6 +24,17 @@ public class Passenger {
     @Column(name = "passportNumber")
     private long passportNumber;
 
+    @Column(name = "role")
+    private String role;
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
     public long getPassportNumber() {
         return passportNumber;
     }

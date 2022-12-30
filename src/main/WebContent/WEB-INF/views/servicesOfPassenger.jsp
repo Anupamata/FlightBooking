@@ -22,8 +22,9 @@
         <input style="height:50px;width:120px" type="submit"  value="   Ticket Booking   "/></form>
    <form method="GET"  action="/FlightBooking/passenger/cancel/${passenger.passengerId}"></br>
            <input style="height:50px;width:120px" type="submit"  value="   Ticket Cancel   "/></form>
-   <form method="get"  action="/FlightBooking/"></br>
-        <input style="height:50px;width:120px" type="submit"  value="   Log Out   "/></form>
+
+        <c:url value="/j_spring_security_logout" var="logoutUrl" />
+        <a href="${logoutUrl}">Log Out</a>
     </center>
     </body>
     </html>

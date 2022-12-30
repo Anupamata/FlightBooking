@@ -18,10 +18,10 @@ public class OfficerDaoImpl implements OfficerDao {
     public List<Officer> fetchAllOfficers() {
         return officerRepository.findAll();
     }
-    @Transactional
-    public Officer login(String username, String password) {
+
+/*    public Officer login(String username, String password) {
         return officerRepository.login(username,password);
-    }
+    }*/
     @Transactional
     public Optional<Officer> getOfficerById(long id) {
         return officerRepository.findById(id);

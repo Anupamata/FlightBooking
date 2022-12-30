@@ -11,13 +11,13 @@
     <body>
     <center>
     <h2>
-    Welcome <i>${manager.managerName}</i><br></h2>
+    Welcome Officer<br></h2>
    <form method="get"  action="/FlightBooking/officer/flightList"></br>
         <input style="height:50px;width:120px" type="submit"  value="View Flight List"/></form>
    <form method="get"  action="/FlightBooking/officer/addFlight"></br>
         <input style="height:50px;width:120px" type="submit"  value="Add Flight"/></form>
-   <form method="get"  action="/FlightBooking/"></br>
-        <input style="height:50px;width:120px" type="submit"  value="   Log Out   "/></form>
+   <c:url value="/j_spring_security_logout" var="logoutUrl" />
+           <a href="${logoutUrl}">Log Out</a>
     </center>
     </body>
     </html>

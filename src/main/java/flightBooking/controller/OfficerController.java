@@ -26,13 +26,13 @@ public class OfficerController {
     private BookingService bookingService;
     @Autowired
     private FlightDetailsService flightDetailsService;
-    @RequestMapping(value = "/login",method = RequestMethod.GET)
+/*    @RequestMapping(value = "/login",method = RequestMethod.GET)
     public ModelAndView officerLoginForm() {
         ModelAndView modelAndView =  new ModelAndView("officerLogin");
         modelAndView.addObject("officer" , new Officer());
         return modelAndView;
-    }
-    @RequestMapping(value = "/loginResult",method = RequestMethod.POST)
+    }*/
+/*    @RequestMapping(value = "/loginResult",method = RequestMethod.POST)
     public ModelAndView officerValidation(@ModelAttribute("officer") Officer officer) {
         Officer newOfficer=officerService.login(officer.getUsername(),officer.getPassword());
         if(newOfficer==null)
@@ -45,7 +45,7 @@ public class OfficerController {
             modelAndView.addObject("officer" , newOfficer);
             return modelAndView;
         }
-    }
+    }*/
     @RequestMapping(value = "/flightList",method = RequestMethod.GET)
     public ModelAndView flightList() {
         ModelAndView modelAndView =  new ModelAndView("flightList");

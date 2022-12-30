@@ -16,10 +16,10 @@ public class OfficerServiceImpl implements OfficerService {
         return officerDao.fetchAllOfficers();
     }
 
-    @Override
+/*    @Override
     public Officer login(String username, String password) {
         return officerDao.login(username,password);
-    }
+    }*/
     @Override
     public Officer getOfficerById(long personId)  {
         Optional<Officer> optionalPersonModel=officerDao.getOfficerById(personId);

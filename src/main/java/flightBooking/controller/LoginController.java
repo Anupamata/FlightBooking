@@ -10,41 +10,33 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.security.Principal;
+import java.util.Objects;
+
 @RestController
-public class HelloWorldController {
+public class LoginController {
     @Autowired
     PassengerService passengerService;
-    @RequestMapping("/helloworld")
+    @RequestMapping("/services")
     public ModelAndView hello(ModelMap model, Principal principal) {
 
         String loggedInUserName=principal.getName();
         Passenger passenger=passengerService.getPassengerByUserName(loggedInUserName);
-        ModelAndView modelAndView=new ModelAndView("hello", "username", loggedInUserName);
-        modelAndView.addObject("passenger",passenger);
-        return modelAndView;
-    }
-
-    @RequestMapping("/admin")
-    public ModelAndView helloAdmin(ModelMap model,Principal principal) {
-
-        String loggedInUserName=principal.getName();
-        Passenger passenger=passengerService.getPassengerByUserName(loggedInUserName);
-        ModelAndView modelAndView=new ModelAndView("admin", "username", loggedInUserName);
-        modelAndView.addObject("passenger",passenger);
-        return modelAndView;
-    }
-
-    @RequestMapping(value="/login", method = RequestMethod.GET)
-    public ModelAndView login(ModelMap model) {
-
-        return new ModelAndView("login");
-
+        if(Objects.equals(passenger.getRole(), "ROLE_USER")) {
+            ModelAndView modelAndView = new ModelAndView("servicesOfPassenger", "username", loggedInUserName);
+            modelAndView.addObject("passenger", passenger);
+            return modelAndView;
+        }
+        else {
+            ModelAndView modelAndView = new ModelAndView("servicesOfOfficer", "username", loggedInUserName);
+            modelAndView.addObject("passenger", passenger);
+            return modelAndView;
+        }
     }
 
     @RequestMapping(value="/loginError", method = RequestMethod.GET)
     public String loginError(ModelMap model) {
         model.addAttribute("error", "true");
-        return "login";
+        return "Invalid credentials";
     }
 
     // for 403 access denied page
