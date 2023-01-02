@@ -7,14 +7,18 @@
 
     <http auto-config="true" use-expressions="true">
         <intercept-url pattern="/resources/**" access="permitAll" />
+
         <intercept-url pattern="/services"
                        access="hasAnyRole('ROLE_ADMIN','ROLE_USER')" />
-        <intercept-url pattern="/admin**" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/officer/**" access="hasRole('ROLE_ADMIN')" />
         <form-login login-page="/" default-target-url="/services"
-                    authentication-failure-url="/loginError" />
-        <logout logout-success-url="/" logout-url="/j_spring_security_logout" />
+                    authentication-failure-url="/loginError"  />
+        <logout logout-success-url="/" logout-url="/j_spring_security_logout"  invalidate-session="true" delete-cookies="JSESSIONID"/>
         <csrf disabled="true" />
         <access-denied-handler error-page="/403" />
+        <session-management session-authentication-error-url="/session" invalid-session-url="/session">
+            <concurrency-control max-sessions="1" error-if-maximum-exceeded="true" />
+        </session-management>
     </http>
     <authentication-manager>
         <authentication-provider>

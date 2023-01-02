@@ -19,7 +19,11 @@ http://java.sun.com/xml/ns/javaee " id="WebApp_ID" version="3.0">
             /WEB-INF/spring-security.xml
         </param-value>
     </context-param>
-
+    <listener>
+        <listener-class>
+            org.springframework.security.web.session.HttpSessionEventPublisher
+        </listener-class>
+    </listener>
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>

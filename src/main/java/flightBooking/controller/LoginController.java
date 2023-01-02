@@ -3,7 +3,9 @@ package flightBooking.controller;
 import flightBooking.model.Passenger;
 import flightBooking.service.PassengerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,9 +36,8 @@ public class LoginController {
     }
 
     @RequestMapping(value="/loginError", method = RequestMethod.GET)
-    public String loginError(ModelMap model) {
-        model.addAttribute("error", "true");
-        return "Invalid credentials";
+    public ModelAndView loginError(ModelMap model) {
+        return new ModelAndView("loginError");
     }
 
     // for 403 access denied page
@@ -57,4 +58,9 @@ public class LoginController {
     }
 
 
+    @GetMapping("/session")
+    public String sessionExpired(Model model) {
+        model.addAttribute("errorMessage", "Your session has expired. Please log in again.");
+        return "login";
+    }
 }
